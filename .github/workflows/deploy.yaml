@@ -31,16 +31,14 @@ jobs:
         - name: List Files in the Repository
           run: |
             ls -l ${{ github.workspace }}  
-        - name: Confirm Enviroment Variables
-          run: echo "${{ steps.meta.outputs.tags }} ++ ${{ steps.meta.outputs.labels }}"
-        #- name: Build and Push
-        #  uses: docker/build-push-action@v5
-        #  with:
-        #    context: .
-        #    platforms: linux/amd64,linux/arm64
-        #    push: true
-        #    tags: ${{ steps.meta.outputs.tags }}
-        #    labels: ${{ steps.meta.outputs.labels }}
+        - name: Build and Push
+          uses: docker/build-push-action@v5
+          with:
+            context: .
+            platforms: linux/amd64,linux/arm64
+            push: true
+            tags: ghcr.io/${{ github.repository }}:latest
+            labels: ${{ steps.meta.outputs.labels }}
         #- run: echo "The Repository is ${{ github.repository }}"
         #- run: echo "This Job's status is ${{ job.status}}"
     
