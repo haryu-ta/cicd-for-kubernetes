@@ -25,17 +25,16 @@ jobs:
             registry: ghcr.io
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
+        - name: List Files in the Repository
+          run: |
+            ls -l ${{ github.workspace }}  
         - name: Build and Push
           uses: docker/build-push-action@v5
           with:
-            context: src
+            context: cicd-web
             push: true
             tags: ${{ steps.meta.outputs.tags }}
             labels: ${{ steps.meta.outputs.labels }}
         - run: echo "The Repository is ${{ github.repository }}"
         - run: echo "This Job's status is ${{ job.status}}"
-        - name: List Files in the Repository
-          run: |
-            ls -l ${{ github.workspace }}
-        # -uses: actions/setup-python@v2
-        # -uses: pre-commit/action@v2.0.0        
+    
