@@ -1,0 +1,23 @@
+name: deploy
+run-name: ${{ github.actor }} is testing
+on:
+    push:
+        branches:
+            -main
+
+jobs:
+  Exec-Java-Push:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo "EventName is ${{ github.event_name }}"
+        - run: echo "Running os is ${{ runner.os }}"
+        - run: echo "Branch is ${{ github.ref }}"
+        - name: Checkout Repository Code
+          uses: actions/checkout@v4
+        - run: echo "The Repository is ${{ github.repository }}"
+        - run: echo "This Job's status is ${{ job.status}}"
+        - name: List Files in the Repository
+          run: |
+            ls -l ${{ github.workspace }}
+        # -uses: actions/setup-python@v2
+        # -uses: pre-commit/action@v2.0.0        
