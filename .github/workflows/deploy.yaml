@@ -5,7 +5,7 @@ on:
       branches:
         - 'main'
       paths:
-        - 'deploy.yaml'
+        - '.githum/workflows/**'
 
 jobs:
   Exec-Java-Push:
