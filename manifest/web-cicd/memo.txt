@@ -1,0 +1,3 @@
+IMAGE_FULL_NAME=test:latest
+echo ${IMAGE_FULL_NAME}
+yq "(.spec.template.spec.containers[] | select(.name == \"web-cicd-app\")).image = \"$IMAGE_FULL_NAME\""  manifest/web-cicd/deployment.yaml

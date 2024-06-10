@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-cicd-app
+  name: web-cicd-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-cicd-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-cicd-app
+    spec:
+      containers:
+        - image: ghcr.io/haryu-ta/cicd-for-kubernetes:latest
+          name: web-cicd-app
+          envFrom:
+            - configMapRef:
+                name: web-cicd-app
+            - secretRef:
+                name: web-cicd-app
+          resources: {}
+status: {}
