@@ -27,3 +27,4 @@ spec:
                 name: web-cicd-app
           resources: {}
 status: {}
+##
