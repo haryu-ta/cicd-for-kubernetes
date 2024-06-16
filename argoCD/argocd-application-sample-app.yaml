@@ -9,7 +9,7 @@ spec:
   project: web-cicd
   source:
     repoURL: https://github.com/haryu-ta/cicd-for-kubernetes.git
-    path: manifests/web-cicd
+    path: manifest/web-cicd
   destination:
     server: https://kubernetes.default.svc
     namespace: default
