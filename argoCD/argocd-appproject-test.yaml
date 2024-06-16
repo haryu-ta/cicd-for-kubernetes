@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: web-cicd
+  namespace: argocd
+spec:
+  description: udemy web-cicd
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: default
+      server: https://kubernetes.default.svc
