@@ -49,23 +49,23 @@ jobs:
         - run: echo "This Job's status is ${{ job.status}}"
       
 
-  # Update-kubernetes-manifest:
-  #   runs-on: ubuntu-latest
-  #   needs: [Exec-Java-Push]
-  #   steps:
-  #     - name: Checkout Repository Code
-  #       uses: actions/checkout@v4
-  #     - name: Update Image Sample
-  #       env:
-  #         IMAGE_TAG_NAME: ghcr.io/${{ github.repository }}:${{ github.sha }}
-  #       run: |
-  #         yq -i "(.spec.template.spec.containers[] | select(.name == \"web-cicd-app\")).image = \"$IMAGE_TAG_NAME\""  manifest/web-cicd/deployment.yaml
-  #     - name: Create PR
-  #       uses: peter-evans/create-pull-request@v5
-  #       with:
-  #         base: main
-  #         draft: true
-  #         title: "Update web-cicd"
-  #         body: |
-  #           # Changes
-  #           - Update `web-cicd` image to ghcr.io/${{ github.repository }}:${{ github.sha }}
+  Update-kubernetes-manifest:
+    runs-on: ubuntu-latest
+    needs: [Exec-Java-Push]
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+      - name: Update Image Sample
+        env:
+          IMAGE_TAG_NAME: ghcr.io/${{ github.repository }}:${{ github.sha }}
+        run: |
+          yq -i "(.spec.template.spec.containers[] | select(.name == \"web-cicd-app\")).image = \"$IMAGE_TAG_NAME\""  manifest/web-cicd/deployment.yaml
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: main
+          draft: true
+          title: "Update web-cicd"
+          body: |
+            # Changes
+            - Update `web-cicd` image to ghcr.io/${{ github.repository }}:${{ github.sha }}
