@@ -76,3 +76,8 @@
     ```
 
     </details>
+
+
+## 
+
+kubectl port-forward svc/web-cicd-app 8080:80
