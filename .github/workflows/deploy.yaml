@@ -54,6 +54,7 @@ jobs:
       actions: write
       checks: write
       contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     needs: [Exec-Java-Push]
     steps:
