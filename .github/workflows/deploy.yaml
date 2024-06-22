@@ -1,5 +1,5 @@
 name: deploy
-run-name: ${{ github.actor }} is testing_
+run-name: ${{ github.actor }} is testing
 on:
     push:
       branches:
