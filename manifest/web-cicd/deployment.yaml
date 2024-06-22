@@ -18,7 +18,7 @@ spec:
         app: web-cicd-app
     spec:
       containers:
-        - image: ghcr.io/haryu-ta/cicd-for-kubernetes:aeca8aa831af2247be0f0ee25a976ce0354443b2
+        - image: ghcr.io/haryu-ta/cicd-for-kubernetes:023a6dde4a12de5e376ed8507841c8b675a75229
           name: web-cicd-app
           envFrom:
             - configMapRef:
